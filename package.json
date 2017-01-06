@@ -19,10 +19,7 @@
     "@types/koa": "^2.0.37",
     "@types/koa-router": "^7.0.21",
     "@types/node": "^6.0.58",
-    "@types/redux": "^3.6.0",
     "inferno": "^1.0.7",
-    "inferno-redux": "^1.0.7",
-    "inferno-router": "^1.0.7",
     "inferno-server": "^1.0.7",
     "koa": "^2.0.0",
     "koa-router": "^7.1.0",
@@ -30,6 +27,7 @@
     "typescript": "^2.1.4"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.5.0",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
