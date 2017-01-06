@@ -2,11 +2,12 @@
   "name": "infernizer",
   "version": "0.0.0",
   "description": "The ultimate inferno boilerplate!",
-  "main": "index.js",
+  "main": "dist/server/index.js",
   "scripts": {
     "test": "npm test",
     "build:client": "webpack",
-    "build:server": "tsc src/server --outDir .tmp"
+    "build:server": "tsc -p tsconfig.server.json --outDir dist/server",
+    "clean": "rimraf .tmp dist"
   },
   "keywords": [
     "inferno",
@@ -29,6 +30,7 @@
     "typescript": "^2.1.4"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-inferno": "^1.5.0",
@@ -38,7 +40,9 @@
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
+    "rimraf": "^2.5.4",
     "ts-loader": "^1.3.3",
+    "tslint": "^4.3.1",
     "webpack": "2.2.0-rc.3"
   }
 }
