@@ -2,8 +2,5 @@
   "extends": "../tsconfig",
   "compilerOptions": {
     "module": "commonjs"
-  },
-  "files": [
-    "../src/server/index.ts"
-  ]
+  }
 }

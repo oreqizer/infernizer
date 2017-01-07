@@ -1,5 +1,3 @@
-import Inferno from 'inferno';
-
 const Root = () => (
   <div>
     Infernizer!
