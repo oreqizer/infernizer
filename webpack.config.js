@@ -32,6 +32,14 @@ const config = {
     }],
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: !prod,
+      options: {
+        resolve: {
+          extensions: ['.ts', '.tsx'],
+        },
+      },
+    }),
     new Assets({
       path: 'dist',
       filename: 'assets.json',

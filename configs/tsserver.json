@@ -1,9 +1,9 @@
 {
-  "extends": "./tsconfig",
+  "extends": "../tsconfig",
   "compilerOptions": {
     "module": "commonjs"
   },
   "files": [
-    "src/server/index.ts"
+    "../src/server/index.ts"
   ]
 }

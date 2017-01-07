@@ -3,21 +3,21 @@ import * as Router from 'koa-router';
 import * as serve from 'koa-static';
 import * as logger from 'koa-logger';
 
-import infernoApp from './infernoApp';
+import app from './app';
 
 
-const app = new Koa();
+const koa = new Koa();
 
 const router = new Router();
 
 
-router.get('/', infernoApp);
+router.get('/', app);
 
 
-app.use(logger());
+koa.use(logger());
 
-app.use(serve('../'));
+koa.use(serve('../'));
 
-app.use(router.routes());
+koa.use(router.routes());
 
-app.listen(3000);
+koa.listen(3000);
