@@ -65,7 +65,7 @@ module.exports = {
     filename: 'static/[name].[hash].js',
   },
   resolve: {
-    extensions: ['js', '.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   module: {
     rules,
