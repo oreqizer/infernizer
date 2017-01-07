@@ -58,7 +58,7 @@ if (prod) {
 module.exports = {
   entry: {
     bundle: './src/client/index.ts',
-    vendor: ['inferno'],
+    vendor: ['inferno', 'normalize.css'],
   },
   output: {
     path: path.resolve(__dirname, 'dist/static'),

@@ -1,8 +1,5 @@
-import styles from './Root.css';
-
-
 const Root = () => (
-  <div className={styles.Root}>
+  <div>
     Infernizer!
   </div>
 );
