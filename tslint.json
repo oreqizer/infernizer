@@ -1,6 +1,7 @@
 {
   "extends": ["tslint:latest"],
   "rules": {
+    "interface-over-type-literal": "off",
     "no-consecutive-blank-lines": [true, 2],
     "quotemark": [true, "single", "jsx-double"]
   }

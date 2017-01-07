@@ -2,7 +2,7 @@ import styles from './Root.css';
 
 
 const Root = () => (
-  <div styles={styles.Root}>
+  <div className={styles.Root}>
     Infernizer!
   </div>
 );

@@ -28,7 +28,7 @@ const rules = [{
 
 
 const plugins = [
-  new ExtractText('static/styles.[hash].css'),
+  new ExtractText('styles.[hash].css'),
   new webpack.LoaderOptionsPlugin({
     debug: !prod,
   }),
@@ -61,8 +61,8 @@ module.exports = {
     vendor: ['inferno'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'static/[name].[hash].js',
+    path: path.resolve(__dirname, 'dist/static'),
+    filename: '[name].[hash].js',
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
