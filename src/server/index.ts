@@ -1,7 +1,7 @@
-import * as Koa from 'koa';
-import * as Router from 'koa-router';
-import * as serve from 'koa-static';
-import * as logger from 'koa-logger';
+import Koa from 'koa';
+import logger from 'koa-logger';
+import Router from 'koa-router';
+import serve from 'koa-static';
 
 import app from './app';
 
