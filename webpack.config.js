@@ -1,40 +1,57 @@
 const path = require('path');
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
+const ExtractText = require('extract-text-webpack-plugin');
+const Assets = require('assets-webpack-plugin');
 
 
-const PRODUCTION = process.env.NODE_ENV === 'production';
+const prod = process.env.NODE_ENV === 'production';
 
 
 const config = {
   entry: {
     bundle: './src/client/index.ts',
-    vendor: ['inferno', 'inferno-redux', 'redux'],
+    vendor: ['inferno'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist/static'),
-    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'static/[name].[hash].js',
   },
   module: {
     rules: [{
       test: /tsx?$/,
       use: ['babel-loader', 'ts-loader'],
+    }, {
+      test: /\.css$/,
+      loader: ExtractText.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader?modules',
+      }),
+    }, {
+      test: /\.html$/,
+      loader: 'html-loader',
     }],
   },
   plugins: [
-    new AssetsPlugin({ path: 'dist', filename: 'assets.json' }),
+    new Assets({
+      path: 'dist',
+      filename: 'assets.json',
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify({ NODE_ENV: PRODUCTION ? 'production' : 'dev' }),
+      'process.env': JSON.stringify({ NODE_ENV: prod ? 'production' : 'dev' }),
     }),
   ],
 };
 
-if (PRODUCTION) {
+if (prod) {
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+} else {
+  config.plugins.push(new webpack.SourceMapDevToolPlugin({
+    exclude: /vendor/,
+  }));
 }
 
 module.exports = config;
