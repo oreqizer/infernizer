@@ -8,7 +8,9 @@
     "run": "node dist/server",
     "bundle": "npm run clean && npm run build:client && npm run build:server",
     "build:client": "webpack",
-    "build:server": "tsc -p configs/tsserver.json --outDir dist/server",
+    "build:server": "npm run tsc && npm run babel",
+    "tsc": "tsc --outDir .tmp",
+    "babel": "babel .tmp --out-dir dist",
     "clean": "rimraf .tmp dist"
   },
   "keywords": [
@@ -45,7 +47,6 @@
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
-    "html-loader": "^0.4.4",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "ts-loader": "^1.3.3",

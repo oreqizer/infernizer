@@ -1,4 +1,3 @@
 {
-  "presets": [["es2015", { "modules": false }], "stage-3"],
-  "plugins": ["inferno"]
+  "plugins": ["inferno", "transform-es2015-modules-commonjs"]
 }
