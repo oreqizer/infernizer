@@ -1,6 +1,6 @@
 import Inferno from 'inferno';
 
-import Root from './Root';
+import Root from './modules/Root';
 
 
 const app = document.getElementById('inferno');
