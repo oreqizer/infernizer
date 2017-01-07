@@ -28,17 +28,14 @@ const rules = [{
 
 
 const plugins = [
+  new ExtractText('static/styles.[hash].css'),
   new webpack.LoaderOptionsPlugin({
     debug: !prod,
-    options: {
-      resolve: {
-        extensions: ['.ts', '.tsx'],
-      },
-    },
   }),
   new Assets({
     path: 'dist',
     filename: 'assets.json',
+    prettyPrint: !prod,
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
@@ -66,6 +63,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'static/[name].[hash].js',
+  },
+  resolve: {
+    extensions: ['js', '.ts', '.tsx'],
   },
   module: {
     rules,
