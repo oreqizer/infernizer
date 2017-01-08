@@ -31,10 +31,11 @@ module.exports = {
       }],
     }, {
       test: /\.css$/,
-      loader: 'css-loader?modules',
+      loader: 'style-loader!css-loader?modules',
     }],
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
     new webpack.SourceMapDevToolPlugin({
       exclude: /vendor/,
     }),
@@ -50,6 +51,9 @@ module.exports = {
       'process.env': JSON.stringify({ NODE_ENV: 'dev' }),
     }),
   ],
+  performance: {
+    hints: false,
+  },
   devServer: {
     contentBase: 'dist/static/',
     proxy: {

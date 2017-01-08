@@ -7,7 +7,7 @@
     "start": "npm run webpack:server && run-p run run:dev",
     "test": "npm test",
     "run": "node dist/server",
-    "run:dev": "webpack-dev-server --config webpack.dev.js",
+    "run:dev": "webpack-dev-server --config webpack.dev.js --inline --hot",
     "bundle": "npm run clean && npm run webpack:server && npm run webpack:client",
     "bundle:min": "cross-env NODE_ENV=production npm run clean && npm run webpack:server && npm run webpack:client",
     "webpack:server": "webpack --config webpack.server.js && npm run clean:server",
