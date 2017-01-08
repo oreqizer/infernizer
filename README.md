@@ -14,7 +14,6 @@ All is configured and working!
 ### TODO
 
 - [ ] render `Root` as a string and inject into it markup
-- [ ] minify css files
 
 ### Credit
 
