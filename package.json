@@ -6,16 +6,15 @@
   "scripts": {
     "test": "npm test",
     "run": "node dist/server",
-    "bundle": "npm run clean && npm run build:client && npm run build:server",
-    "build:client": "webpack",
-    "build:server": "npm run tsc && npm run babel",
-    "tsc": "tsc --outDir .tmp",
-    "babel": "babel .tmp --out-dir dist",
+    "bundle": "npm run clean && webpack && rimraf dist/server/index.css",
     "clean": "rimraf .tmp dist"
   },
   "keywords": [
     "inferno",
-    "redux"
+    "webpack",
+    "isomorphic",
+    "universal",
+    "boilerplate"
   ],
   "author": "oreqizer",
   "license": "MIT",

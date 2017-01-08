@@ -5,6 +5,7 @@ import serve from 'koa-static';
 import path from 'path';
 
 import app from './app';
+import { port } from './config';
 
 
 const koa = new Koa();
@@ -21,4 +22,4 @@ koa.use(serve(path.join(__dirname, '../static/')));
 
 koa.use(router.routes());
 
-koa.listen(3000);
+koa.listen(port);

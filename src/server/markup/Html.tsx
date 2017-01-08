@@ -9,6 +9,7 @@ const Html = (props) => (
       <title>Infernizer</title>
       <meta charset="utf-8" />
 
+      <link href={assets.vendor.css} rel="stylesheet" />
       <link href={assets.bundle.css} rel="stylesheet" />
     </head>
     <body>
