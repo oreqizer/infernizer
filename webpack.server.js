@@ -28,8 +28,7 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: ExtractText.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader?modules',
+        loader: ['css-loader', 'postcss-loader'],
       }),
     }],
   },

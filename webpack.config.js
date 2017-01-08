@@ -73,7 +73,7 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractText.extract({
         fallbackLoader: 'style-loader',
-        loader: ['css-loader?modules&sourceMap', 'postcss-loader'],
+        loader: ['css-loader', 'postcss-loader'],
       }),
     }],
   },
