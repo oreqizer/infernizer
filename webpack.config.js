@@ -24,7 +24,12 @@ const plugins = [
 ];
 
 if (production) {
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    comments: false,
+    pure_getters: true,
+    unsafe: true,
+    unsafe_comps: true,
+  }));
 }
 
 module.exports = {
