@@ -9,7 +9,7 @@
     "run": "node dist/server",
     "run:dev": "webpack-dev-server --config webpack.dev.js --inline --hot",
     "bundle": "npm run clean && npm run webpack:server && npm run webpack:client",
-    "bundle:min": "cross-env NODE_ENV=production npm run clean && npm run webpack:server && npm run webpack:client",
+    "bundle:min": "npm run clean && npm run webpack:server && cross-env NODE_ENV=production npm run webpack:client",
     "webpack:server": "webpack --config webpack.server.js && npm run clean:server",
     "webpack:client": "webpack",
     "clean": "rimraf .tmp dist",
