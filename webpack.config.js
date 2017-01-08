@@ -65,10 +65,4 @@ module.exports = {
     }],
   },
   plugins,
-  devServer: {
-    contentBase: 'dist/static/',
-    proxy: {
-      '*': 'http://localhost:3000',
-    },
-  },
 };
