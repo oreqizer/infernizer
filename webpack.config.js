@@ -23,14 +23,30 @@ const plugins = [
   }),
 ];
 
+const babelOptions = {
+  presets: [['es2015', { modules: false }], 'stage-3'],
+  plugins: ['inferno'],
+};
+
 if (production) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     comments: false,
+    negate_iife: false,  // <- for `v8LazyParse()`
+    comparisons: true,
+    conditionals: true,
+    dead_code: true,
+    evaluate: true,
+    if_return: true,
+    join_vars: true,
     pure_getters: true,
     unsafe: true,
     unsafe_comps: true,
+    unused: true,
   }));
+
+  babelOptions.plugins.push('babili');
 }
+
 
 module.exports = {
   entry: {
@@ -49,10 +65,7 @@ module.exports = {
       test: /tsx?$/,
       use: [{
         loader: 'babel-loader',
-        options: {
-          presets: [['es2015', { modules: false }], 'stage-3'],
-          plugins: ['inferno'],
-        },
+        options: babelOptions,
       }, {
         loader: 'ts-loader',
       }],
