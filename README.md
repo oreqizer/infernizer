@@ -11,10 +11,6 @@ The ultimate boilerplate for [Inferno](https://infernojs.org/)! :fire:
 
 All is configured and working!
 
-### TODO
-
-- [ ] render `Root` as a string and inject into it markup
-
 ### Credit
 
-Ideas taken from [inferno-starter](https://github.com/lukeed/inferno-starter).
+Optimization ideas borrowed from [inferno-starter](https://github.com/lukeed/inferno-starter).
