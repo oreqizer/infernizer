@@ -1,9 +1,11 @@
 import { assets } from '../config';
 
-import Root from '../../client/modules/Root';
 
+type Props = {
+  root: string,
+};
 
-const Html = (props) => (
+const Html = (props: Props) => (
   <html lang="en">
     <head>
       <title>Infernizer</title>
@@ -13,9 +15,7 @@ const Html = (props) => (
       <link href={assets.bundle.css} rel="stylesheet" />
     </head>
     <body>
-      <div id="inferno">
-        <Root />
-      </div>
+      <div id="inferno" dangerouslySetInnerHTML={{ __html: props.root }} />
 
       <script src={assets.vendor.js} />
       <script src={assets.bundle.js} />

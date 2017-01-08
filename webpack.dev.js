@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
-const Assets = require('assets-webpack-plugin');
 
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
     vendor: ['inferno', 'normalize.css'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist/static'),
+    path: path.resolve(__dirname, '.tmp/static'),
     publicPath: '/',
     filename: '[name].js',
   },
@@ -45,17 +44,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('dev'),
     }),
-    new Assets({
-      path: 'dist',
-      filename: 'assets.json',
-      prettyPrint: true,
-    }),
   ],
   performance: {
     hints: false,
   },
   devServer: {
-    contentBase: 'dist/static/',
+    contentBase: '.tmp/static/',
     proxy: {
       '*': 'http://localhost:3000',
     },

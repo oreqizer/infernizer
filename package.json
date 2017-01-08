@@ -4,7 +4,7 @@
   "description": "The ultimate inferno boilerplate!",
   "main": "dist/server/index.js",
   "scripts": {
-    "start": "npm run build:server && run-p run run:dev",
+    "start": "npm run clean && npm run build:server && run-p run run:dev",
     "test": "npm test",
     "run": "node dist/server",
     "run:dev": "webpack-dev-server --config webpack.dev.js --inline --hot",

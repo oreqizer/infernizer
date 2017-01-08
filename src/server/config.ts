@@ -14,9 +14,11 @@ function loadAssets(): Assets {
 
     return JSON.parse(String(raw));
   } catch (err) {
-    console.error('[config] Error loading asset info');
-
-    throw err;
+    // No assets.json - use defaults
+    return {
+      bundle: { js: 'bundle.js', css: 'bundle.css' },
+      vendor: { js: 'vendor.js', css: 'vendor.css' },
+    };
   }
 }
 
