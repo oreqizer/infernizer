@@ -1,31 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
-const ExtractText = require('extract-text-webpack-plugin');
 const Assets = require('assets-webpack-plugin');
 
-
-const production = process.env.NODE_ENV === 'production';
-
-
-const plugins = [
-  new ExtractText('[name].[hash].css'),
-  new Assets({
-    path: 'dist',
-    filename: 'assets.json',
-    prettyPrint: !production,
-  }),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    minChunks: Infinity,
-  }),
-  new webpack.DefinePlugin({
-    'process.env': JSON.stringify({ NODE_ENV: production ? 'production' : 'dev' }),
-  }),
-];
-
-if (production) {
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
-}
 
 module.exports = {
   entry: {
@@ -34,7 +11,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/static'),
-    filename: '[name].[hash].js',
+    publicPath: '/',
+    filename: '[name].js',
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -53,13 +31,25 @@ module.exports = {
       }],
     }, {
       test: /\.css$/,
-      loader: ExtractText.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader?modules',
-      }),
+      loader: 'css-loader?modules',
     }],
   },
-  plugins,
+  plugins: [
+    new webpack.SourceMapDevToolPlugin({
+      exclude: /vendor/,
+    }),
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+    }),
+    new Assets({
+      path: 'dist',
+      filename: 'assets.json',
+      prettyPrint: true,
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify({ NODE_ENV: 'dev' }),
+    }),
+  ],
   devServer: {
     contentBase: 'dist/static/',
     proxy: {
