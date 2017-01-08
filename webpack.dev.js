@@ -31,7 +31,7 @@ module.exports = {
       }],
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader?modules',
+      loader: ['style-loader', 'css-loader?modules', 'postcss-loader'],
     }],
   },
   plugins: [
@@ -42,13 +42,13 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       debug: true,
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('dev'),
+    }),
     new Assets({
       path: 'dist',
       filename: 'assets.json',
       prettyPrint: true,
-    }),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify({ NODE_ENV: 'dev' }),
     }),
   ],
   performance: {

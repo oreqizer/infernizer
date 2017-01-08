@@ -6,6 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
     "sourceMap": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "strictNullChecks": true
   },

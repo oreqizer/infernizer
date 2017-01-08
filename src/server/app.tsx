@@ -1,11 +1,11 @@
-import { renderToStaticMarkup } from 'inferno-server';
+import { renderToString } from 'inferno-server';
 
 import Html from './markup/Html';
 
 
 async function app(ctx, next) {
   // TODO render Root as renderToString
-  ctx.body = renderToStaticMarkup(<Html />);
+  ctx.body = renderToString(<Html />);
   ctx.status = 200;
 }
 

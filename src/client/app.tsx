@@ -5,7 +5,9 @@ import Root from './modules/Root';
 
 const app = document.getElementById('inferno');
 
-Inferno.render(<Root />, app);
+if (app) {
+  Inferno.render(<Root />, app);
+}
 
 // Hot reload
 // ---

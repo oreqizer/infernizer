@@ -28,11 +28,11 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: ExtractText.extract({
-        loader: ['css-loader', 'postcss-loader'],
+        loader: ['css-loader?modules', 'postcss-loader'],
       }),
     }],
   },
   plugins: [
-    new ExtractText('index.css'),
+    new ExtractText({ filename: 'index.css', allChunks: true }),
   ],
 };

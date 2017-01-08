@@ -8,18 +8,21 @@ const production = process.env.NODE_ENV === 'production';
 
 
 const plugins = [
-  new ExtractText('[name].[hash].css'),
-  new Assets({
-    path: 'dist',
-    filename: 'assets.json',
-    prettyPrint: !production,
+  new webpack.LoaderOptionsPlugin({
+    minimize: production,
+  }),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'dev'),
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
   }),
-  new webpack.DefinePlugin({
-    'process.env': JSON.stringify({ NODE_ENV: production ? 'production' : 'dev' }),
+  new ExtractText({ filename: '[name].[hash].css', allChunks: true }),
+  new Assets({
+    path: 'dist',
+    filename: 'assets.json',
+    prettyPrint: !production,
   }),
 ];
 
@@ -73,7 +76,7 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractText.extract({
         fallbackLoader: 'style-loader',
-        loader: ['css-loader', 'postcss-loader'],
+        loader: ['css-loader?modules', 'postcss-loader'],
       }),
     }],
   },
