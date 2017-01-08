@@ -76,7 +76,7 @@ const node = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/server'),
-    filename: '[name].node.js',
+    filename: 'index.js',
     libraryTarget: 'commonjs2',
   },
   externals: /^[a-z\-/0-9]+$/,
