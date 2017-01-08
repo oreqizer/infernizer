@@ -11,7 +11,10 @@
   },
   "keywords": [
     "inferno",
-    "redux"
+    "webpack",
+    "isomorphic",
+    "universal",
+    "boilerplate"
   ],
   "author": "oreqizer",
   "license": "MIT",
