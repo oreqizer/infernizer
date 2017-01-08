@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm test",
     "run": "node dist/server",
-    "bundle": "npm run clean && webpack",
+    "bundle": "npm run clean && webpack && rimraf dist/server/index.css",
     "clean": "rimraf .tmp dist"
   },
   "keywords": [

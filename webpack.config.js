@@ -97,7 +97,7 @@ const node = {
     }, cssLoader],
   },
   plugins: [
-    new ExtractText('useless.css'),  // TODO get rid of this
+    new ExtractText('index.css'),
   ],
 };
 
