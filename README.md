@@ -6,7 +6,7 @@ The ultimate boilerplate for [Inferno](https://infernojs.org/)! :fire:
 
 * TypeScript
 * CSS modules
-* webpack + hot reloading
+* Webpack + hot reloading
 * Isomorphic rendering
 * TSlint
 
