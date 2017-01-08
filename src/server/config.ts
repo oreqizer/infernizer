@@ -4,8 +4,9 @@ import path from 'path';
 
 type Assets = {
   bundle: { js: string, css: string },
-  vendor: { js: string },
+  vendor: { js: string, css: string },
 };
+
 
 function loadAssets(): Assets {
   try {
@@ -21,6 +22,6 @@ function loadAssets(): Assets {
 
 export const assets = loadAssets();
 
-export const env = process.env.NODE_ENV || 'dev';
+export const production = process.env.NODE_ENV === 'production';
 
 export const port = Number(process.env.PORT || 3000);

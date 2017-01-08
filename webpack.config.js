@@ -4,58 +4,37 @@ const ExtractText = require('extract-text-webpack-plugin');
 const Assets = require('assets-webpack-plugin');
 
 
-const prod = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
 
-
-const rules = [{
-  test: /tsx?$/,
-  use: [{
-    loader: 'babel-loader',
-    options: {
-      presets: [['es2015', { modules: false }], 'stage-3'],
-      plugins: ['inferno'],
-    },
-  }, {
-    loader: 'ts-loader',
-  }],
-}, {
-  test: /\.css$/,
-  loader: ExtractText.extract({
-    fallbackLoader: 'style-loader',
-    loader: 'css-loader?modules',
-  }),
-}];
-
-
-const plugins = [
+const webPlugins = [
   new ExtractText('styles.[hash].css'),
   new webpack.LoaderOptionsPlugin({
-    debug: !prod,
+    debug: !production,
   }),
   new Assets({
     path: 'dist',
     filename: 'assets.json',
-    prettyPrint: !prod,
+    prettyPrint: !production,
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
   }),
   new webpack.DefinePlugin({
-    'process.env': JSON.stringify({ NODE_ENV: prod ? 'production' : 'dev' }),
+    'process.env': JSON.stringify({ NODE_ENV: production ? 'production' : 'dev' }),
   }),
 ];
 
-if (prod) {
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
+if (production) {
+  webPlugins.push(new webpack.optimize.UglifyJsPlugin());
 } else {
-  plugins.push(new webpack.SourceMapDevToolPlugin({
+  webPlugins.push(new webpack.SourceMapDevToolPlugin({
     exclude: /vendor/,
   }));
 }
 
 
-module.exports = {
+const web = {
   entry: {
     bundle: './src/client/index.ts',
     vendor: ['inferno', 'normalize.css'],
@@ -68,7 +47,51 @@ module.exports = {
     extensions: ['.js', '.ts', '.tsx'],
   },
   module: {
-    rules,
+    rules: [{
+      test: /tsx?$/,
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: [['es2015', { modules: false }], 'stage-3'],
+          plugins: ['inferno'],
+        },
+      }, {
+        loader: 'ts-loader',
+      }],
+    }, {
+      test: /\.css$/,
+      loader: ExtractText.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader?modules',
+      }),
+    }],
   },
-  plugins,
+  plugins: webPlugins,
 };
+
+const node = {
+  target: 'node',
+  entry: {
+    bundle: './src/server/index.ts',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/server'),
+    filename: '[name].node.js',
+    libraryTarget: 'commonjs2',
+  },
+  externals: /^[a-z\-/0-9]+$/,
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
+  },
+  module: {
+    rules: [{
+      test: /tsx?$/,
+      use: ['babel-loader', 'ts-loader'],
+    }, {
+      test: /\.css$/,
+      use: 'css-loader?modules',
+    }],
+  },
+};
+
+module.exports = [web, node];

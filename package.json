@@ -7,7 +7,7 @@
     "test": "npm test",
     "run": "node dist/server",
     "bundle": "npm run clean && npm run build:client && npm run build:server",
-    "build:client": "webpack",
+    "build:webpack": "webpack",
     "build:server": "npm run tsc && npm run babel",
     "tsc": "tsc --outDir .tmp",
     "babel": "babel .tmp --out-dir dist",
