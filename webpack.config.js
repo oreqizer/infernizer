@@ -7,7 +7,7 @@ const Assets = require('assets-webpack-plugin');
 const production = process.env.NODE_ENV === 'production';
 
 const webPlugins = [
-  new ExtractText('styles.[hash].css'),
+  new ExtractText('[name].[hash].css'),
   new webpack.LoaderOptionsPlugin({
     debug: !production,
   }),
