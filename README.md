@@ -9,4 +9,9 @@ The ultimate boilerplate for [Inferno](https://infernojs.org/). :fire:
 * webpack
 * TSlint
 
-All is configured and working! (not really lol, working on it)
+All is configured and working!
+
+### TODO
+
+- [ ] render `Root` as a string and inject into it markup
+- [ ] minify & sourcemap css files
