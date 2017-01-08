@@ -15,7 +15,6 @@ All is configured and working!
 
 - [ ] render `Root` as a string and inject into it markup
 - [ ] minify css files
-- [ ] use [react-css-modules](https://github.com/gajus/babel-plugin-react-css-modules) instead of webpack server-side
 
 ### Credit
 
