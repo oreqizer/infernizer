@@ -14,7 +14,7 @@ function loadAssets(): Assets {
 
     return JSON.parse(String(raw));
   } catch (err) {
-    console.error('[config] Error loading asset info', err);
+    console.error('[config] Error loading asset info');
 
     throw err;
   }

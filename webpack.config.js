@@ -6,6 +6,15 @@ const Assets = require('assets-webpack-plugin');
 
 const production = process.env.NODE_ENV === 'production';
 
+
+const cssLoader = {
+  test: /\.css$/,
+  loader: ExtractText.extract({
+    fallbackLoader: 'style-loader',
+    loader: 'css-loader?modules',
+  }),
+};
+
 const webPlugins = [
   new ExtractText('[name].[hash].css'),
   new webpack.LoaderOptionsPlugin({
@@ -58,19 +67,17 @@ const web = {
       }, {
         loader: 'ts-loader',
       }],
-    }, {
-      test: /\.css$/,
-      loader: ExtractText.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader?modules',
-      }),
-    }],
+    }, cssLoader],
   },
   plugins: webPlugins,
 };
 
 const node = {
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
   entry: {
     bundle: './src/server/index.ts',
   },
@@ -87,11 +94,11 @@ const node = {
     rules: [{
       test: /tsx?$/,
       use: ['babel-loader', 'ts-loader'],
-    }, {
-      test: /\.css$/,
-      use: 'css-loader?modules',
-    }],
+    }, cssLoader],
   },
+  plugins: [
+    new ExtractText('useless.css'),  // TODO get rid of this
+  ],
 };
 
 module.exports = [web, node];
