@@ -28,7 +28,7 @@ const plugins = [
 
 const babelOptions = {
   presets: [['es2015', { modules: false, loose: true }], 'stage-3'],
-  plugins: ['inferno'],
+  plugins: [['inferno', { imports: true }]],
 };
 
 if (production) {
