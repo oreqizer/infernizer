@@ -3,6 +3,12 @@ const path = require('path');
 const webpack = require('webpack');
 
 
+const babelOptions = {
+  presets: [['es2015', { modules: false, loose: true }], 'stage-3'],
+  plugins: [['inferno', { imports: true }]],
+};
+
+
 module.exports = {
   entry: {
     bundle: './src/client/index.ts',
@@ -21,16 +27,16 @@ module.exports = {
       test: /tsx?$/,
       use: [{
         loader: 'babel-loader',
-        options: {
-          presets: [['es2015', { modules: false }], 'stage-3'],
-          plugins: ['inferno'],
-        },
+        options: babelOptions,
       }, {
         loader: 'ts-loader',
       }],
     }, {
       test: /\.css$/,
-      loader: ['style-loader', 'css-loader?modules', 'postcss-loader'],
+      use: ['style-loader', {
+        loader: 'css-loader',
+        options: { modules: true },
+      }, 'postcss-loader'],
     }],
   },
   plugins: [

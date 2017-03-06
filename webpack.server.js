@@ -28,7 +28,10 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: ExtractText.extract({
-        use: ['css-loader?modules', 'postcss-loader'],
+        use: [{
+          loader: 'css-loader',
+          options: { modules: true },
+        }, 'postcss-loader'],
       }),
     }],
   },
