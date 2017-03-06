@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 
+const ASSETS = path.join(__dirname, '../assets.json');
+
+
 export const production = process.env.NODE_ENV === 'production';
 
 export const port = Number(process.env.PORT || 3000);
@@ -13,12 +16,11 @@ type Assets = {
 };
 
 function loadAssets(): Assets {
-  if (production) {
-    const raw = fs.readFileSync(path.join(__dirname, '../assets.json'));
-
-    return JSON.parse(String(raw));
+  if (fs.existsSync(ASSETS)) {
+    return JSON.parse(String(fs.readFileSync(ASSETS)));
   }
 
+  // Styles are inlined in development
   return {
     bundle: { js: 'bundle.js' },
     vendor: { js: 'vendor.js' },
