@@ -5,7 +5,7 @@ import styles from './Root.css';
 
 const Root = () => (
   <div className={styles.Root}>
-    Infernizer!
+    Reactizer!
   </div>
 );
 
