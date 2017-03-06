@@ -1,6 +1,6 @@
-# Infernizer
+# Reactizer
 
-The ultimate boilerplate for [Inferno](https://infernojs.org/)! :fire:
+The ultimate boilerplate for [React](https://facebook.github.io/react/)! :dolls:
 
 ### Overview
 

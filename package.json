@@ -1,7 +1,7 @@
 {
-  "name": "infernizer",
+  "name": "reactizer",
   "version": "0.0.0",
-  "description": "The ultimate inferno boilerplate!",
+  "description": "The ultimate react boilerplate!",
   "main": "dist/server/index.js",
   "scripts": {
     "start": "npm run clean && npm run build:server && run-p run run:dev",
@@ -17,7 +17,7 @@
     "clean:server": "rimraf dist/server/index.css"
   },
   "keywords": [
-    "inferno",
+    "react",
     "webpack",
     "isomorphic",
     "universal",
