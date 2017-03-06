@@ -3,8 +3,8 @@ import path from 'path';
 
 
 type Assets = {
-  bundle: { js: string, css: string },
-  vendor: { js: string, css: string },
+  bundle: { js: string, css?: string },
+  vendor: { js: string, css?: string },
 };
 
 
@@ -14,10 +14,10 @@ function loadAssets(): Assets {
 
     return JSON.parse(String(raw));
   } catch (err) {
-    // No assets.json - use defaults
+    // No assets.json - .css are inline on development
     return {
-      bundle: { js: 'bundle.js', css: 'bundle.css' },
-      vendor: { js: 'vendor.js', css: 'vendor.css' },
+      bundle: { js: 'bundle.js' },
+      vendor: { js: 'vendor.js' },
     };
   }
 }

@@ -15,11 +15,10 @@ const router = new Router();
 
 router.get('/', app);
 
-// TODO remove ' as any' when Koa is fixed
-koa.use(logger() as any);
+koa.use(logger());
 
-koa.use(serve(path.join(__dirname, '../static/')) as any);
+koa.use(serve(path.join(__dirname, '../static/')));
 
-koa.use(router.routes() as any);
+koa.use(router.routes());
 
 koa.listen(port);
