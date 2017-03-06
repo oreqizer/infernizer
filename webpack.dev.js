@@ -4,15 +4,14 @@ const webpack = require('webpack');
 
 
 const babelOptions = {
-  presets: [['es2015', { modules: false, loose: true }], 'stage-3'],
-  plugins: [['inferno', { imports: true }]],
+  presets: ['react', ['es2015', { modules: false, loose: true }], 'stage-3'],
 };
 
 
 module.exports = {
   entry: {
     bundle: './src/client/index.ts',
-    vendor: ['inferno', 'normalize.css'],
+    vendor: ['react', 'react-dom', 'normalize.css'],
   },
   output: {
     path: path.resolve(__dirname, '.tmp/static'),
