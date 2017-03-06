@@ -46,8 +46,6 @@ if (production) {
     unsafe_comps: true,
     unused: true,
   }));
-
-  babelOptions.plugins.push('babili');
 }
 
 
@@ -74,9 +72,9 @@ module.exports = {
       }],
     }, {
       test: /\.css$/,
-      loader: ExtractText.extract({
-        fallbackLoader: 'style-loader',
-        loader: ['css-loader?modules', 'postcss-loader'],
+      use: ExtractText.extract({
+        fallback: 'style-loader',
+        use: ['css-loader?modules', 'postcss-loader'],
       }),
     }],
   },

@@ -27,8 +27,8 @@ module.exports = {
       use: ['babel-loader', 'ts-loader'],
     }, {
       test: /\.css$/,
-      loader: ExtractText.extract({
-        loader: ['css-loader?modules', 'postcss-loader'],
+      use: ExtractText.extract({
+        use: ['css-loader?modules', 'postcss-loader'],
       }),
     }],
   },
