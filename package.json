@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run clean && npm run build:server && run-p run run:dev",
     "test": "npm test",
-    "run": "node dist/server",
+    "run": "NODE_ENV=production node dist/server",
     "run:dev": "webpack-dev-server --config webpack.dev.js --inline --hot",
     "bundle": "npm run clean && npm run build:server && npm run build:client",
     "bundle:min": "npm run clean && npm run build:server && cross-env NODE_ENV=production npm run build:client",
