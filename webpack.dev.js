@@ -10,7 +10,7 @@ const babelOptions = {
 
 module.exports = {
   entry: {
-    bundle: './src/client/index.ts',
+    bundle: './src/client/index.js',
     vendor: ['react', 'react-dom', 'normalize.css'],
   },
   output: {
@@ -19,16 +19,14 @@ module.exports = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [{
-      test: /tsx?$/,
+      test: /jsx?$/,
       use: [{
         loader: 'babel-loader',
         options: babelOptions,
-      }, {
-        loader: 'ts-loader',
       }],
     }, {
       test: /\.css$/,

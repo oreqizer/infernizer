@@ -1,3 +1,4 @@
+/* @flow */
 import React from 'react';
 import { render } from 'react-dom';
 
@@ -13,7 +14,7 @@ if (app) {
 // Hot reload
 // ---
 
-const hmr: any = module;
-if (hmr.hot) {
-  hmr.hot.accept();
+/* eslint-disable no-undef */
+if (module.hot) {
+  module.hot.accept();
 }

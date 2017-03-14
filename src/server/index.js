@@ -1,3 +1,4 @@
+/* @flow */
 import Koa from 'koa';
 import logger from 'koa-logger';
 import Router from 'koa-router';

@@ -10,7 +10,7 @@ module.exports = {
     __filename: false,
   },
   entry: {
-    bundle: './src/server/index.ts',
+    bundle: './src/server/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist/server'),
@@ -19,12 +19,12 @@ module.exports = {
   },
   externals: /^[a-z\-/0-9]+$/,
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [{
-      test: /tsx?$/,
-      use: ['babel-loader', 'ts-loader'],
+      test: /jsx?$/,
+      use: ['babel-loader'],
     }, {
       test: /\.css$/,
       use: ExtractText.extract({
