@@ -23,15 +23,15 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /jsx?$/,
+      test: /\.jsx?$/,
       use: ['babel-loader'],
     }, {
-      test: /\.css$/,
+      test: /\.s?css$/,
       use: ExtractText.extract({
         use: [{
           loader: 'css-loader',
           options: { modules: true },
-        }, 'postcss-loader'],
+        }, 'postcss-loader', 'sass-loader'],
       }),
     }],
   },

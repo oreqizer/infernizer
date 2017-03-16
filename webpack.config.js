@@ -62,19 +62,19 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /jsx?$/,
+      test: /\.jsx?$/,
       use: [{
         loader: 'babel-loader',
         options: babelOptions,
       }],
     }, {
-      test: /\.css$/,
+      test: /\.s?css$/,
       use: ExtractText.extract({
-        fallback: 'style-loader',
+        fallback: ['style-loader', 'sass-loader'],
         use: [{
           loader: 'css-loader',
           options: { modules: true },
-        }, 'postcss-loader'],
+        }, 'postcss-loader', 'sass-loader'],
       }),
     }],
   },
