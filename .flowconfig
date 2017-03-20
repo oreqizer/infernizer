@@ -6,6 +6,8 @@
 types/
 
 [options]
-# module.name_mapper.extension='css' -> '<PROJECT_ROOT>/types/CSSModule.js.flow'
+emoji=true
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=src
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
 suppress_comment=\\(.\\|\n\\)*\\$FlowIssue

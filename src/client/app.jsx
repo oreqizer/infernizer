@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Root from './modules/Root';
+import Root from './scenes/Root';
 
 
 const app = document.getElementById('react');

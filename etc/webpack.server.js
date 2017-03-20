@@ -1,6 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const ExtractText = require('extract-text-webpack-plugin');
+
+const shared = require('./webpack.shared');
 
 
 module.exports = {
@@ -10,30 +11,20 @@ module.exports = {
     __filename: false,
   },
   entry: {
-    bundle: './src/server/index.js',
+    bundle: path.resolve(__dirname, '../src/server/index.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'dist/server'),
+    path: path.resolve(__dirname, '../dist/server'),
     filename: 'index.js',
     libraryTarget: 'commonjs2',
   },
   externals: /^[a-z\-/0-9]+$/,
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  resolve: shared.resolve,
   module: {
     rules: [{
-      test: /jsx?$/,
+      test: /\.jsx?$/,
       use: ['babel-loader'],
-    }, {
-      test: /\.css$/,
-      use: ExtractText.extract({
-        use: [{
-          loader: 'css-loader',
-          options: { modules: true },
-        }, 'postcss-loader'],
-      }),
-    }],
+    }, shared.cssShared],
   },
   plugins: [
     new ExtractText({ filename: 'index.css', allChunks: true }),

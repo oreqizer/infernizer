@@ -4,7 +4,7 @@ import React from 'react';
 import ReactServer from 'react-dom/server';
 import type { Context } from 'koa';
 
-import Root from '../client/modules/Root';
+import Root from 'client/scenes/Root';
 import Html from './markup/Html';
 
 
