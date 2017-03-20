@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const ExtractText = require('extract-text-webpack-plugin');
 const Assets = require('assets-webpack-plugin');
 
+const shared = require('./webpack.shared.js');
+
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -26,10 +28,6 @@ const plugins = [
   }),
 ];
 
-const babelOptions = {
-  presets: ['react', ['es2015', { modules: false, loose: true }], 'stage-3'],
-};
-
 if (production) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     comments: false,
@@ -49,36 +47,14 @@ if (production) {
 
 
 module.exports = {
-  entry: {
-    bundle: './src/client/index.ts',
-    vendor: ['react', 'react-dom', 'normalize.css'],
-  },
+  entry: shared.entry,
   output: {
-    path: path.resolve(__dirname, 'dist/static'),
+    path: path.resolve(__dirname, '../dist/static'),
     filename: '[name].[hash].js',
   },
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
-  },
+  resolve: shared.resolve,
   module: {
-    rules: [{
-      test: /tsx?$/,
-      use: [{
-        loader: 'babel-loader',
-        options: babelOptions,
-      }, {
-        loader: 'ts-loader',
-      }],
-    }, {
-      test: /\.css$/,
-      use: ExtractText.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader',
-          options: { modules: true },
-        }, 'postcss-loader'],
-      }),
-    }],
+    rules: [shared.jsClient, shared.cssShared],
   },
   plugins,
 };

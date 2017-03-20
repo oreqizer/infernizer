@@ -1,3 +1,5 @@
+/* @flow */
+/* eslint-disable react/no-danger */
 import React from 'react';
 
 import { assets } from '../config';
@@ -10,7 +12,7 @@ type Props = {
 const Html = (props: Props) => (
   <html lang="en">
     <head>
-      <title>Infernizer</title>
+      <title>Reactizer</title>
       <meta charSet="utf-8" />
 
       <link href={assets.vendor.css} rel="stylesheet" />

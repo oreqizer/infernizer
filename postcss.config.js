@@ -1,8 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const autoprefixer = require('autoprefixer');
+const cssimport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+
 
 module.exports = {
   plugins: [
-    autoprefixer,
+    cssimport({ path: 'src' }),
+    cssnext(),
   ],
 };
